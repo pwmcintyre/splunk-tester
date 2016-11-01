@@ -1,0 +1,20 @@
+{
+  "name": "splunk-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "config": "^1.21.0",
+    "handlebars": "^4.0.5",
+    "splunk-sdk": "^1.8.1"
+  }
+}
