@@ -28,6 +28,15 @@ I've used this docker [splunk](https://hub.docker.com/r/johnsandiford/splunk) co
 Run all test cases
 > mocha
 
+Example output (if you haven't changed any test cases)
+
+    $ mocha    
+    
+      Basic searching
+        ✓ should return 1 result quickly (367ms)
+    
+      1 passing (377ms)
+
 ## Write More Test Cases
 Add as many test cases as you need in the test folder.
 > ./tests/test-*.js
