@@ -5,6 +5,11 @@ Writing a complicated SPL?
 
 Maybe you need some automated test cases!
 
+## Dependancies
+
+Mocha, recommend installing globally
+> $ npm install -g mocha
+
 ## Install
 Pull
 > $ git pull git@github.com:pwmcintyre/splunk-tester.git
