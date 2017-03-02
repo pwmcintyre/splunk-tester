@@ -16,11 +16,43 @@ var apply = function (template, parms) {
 	return result;
 }
 
+// Default search parameters
+var searchParams = {
+	exec_mode: "normal",
+	output_mode:"json",
+	earliest_time: "@m-10m",
+	latest_time: "@m"
+};
+var params = function (newParams) {
+	searchParams = Object.assign(searchParams, newParams);
+	return this;
+}
+var exec_mode = function (exec_mode) {
+	searchParams.exec_mode = exec_mode
+	return this;
+}
+var output_mode = function (output_mode) {
+	searchParams.output_mode = output_mode
+	return this;
+}
+var earliest_time = function (earliest_time) {
+	searchParams.earliest_time = earliest_time
+	return this;
+}
+var latest_time = function (latest_time) {
+	searchParams.latest_time = latest_time
+	return this;
+}
+
 // Allows easy setting of namespace
 var namespace = {
 	owner: "-",
 	app: "-",
 	sharing: "global"
+}
+var namespace = function (newnamespace) {
+	namespace = Object.assign(namespace, newnamespace);
+	return this;
 }
 var owner = function (owner) {
 	namespace.owner = owner;
@@ -61,11 +93,13 @@ function mapToJson (results) {
 }
 
 // run search, poll job, return results
-var search = function (query, parms) {
+var search = function (query, p) {
+
+	if (p) params(p);
 	
 	var promise = new Promise(function (resolve, reject) {
 
-		service.search( query, parms, namespace, function(err, job) {
+		service.search( query, searchParams, namespace, function(err, job) {
 
 			// error scenarios
 			if (err) return reject(err);

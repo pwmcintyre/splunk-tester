@@ -4,12 +4,6 @@ var splunktester = require('..');
 describe('Basic searching', function() {
 		
 	var template = "search index=_internal sourcetype={{sourcetype}} | head {{limit}}";
-	var searchParams = {
-		exec_mode: "normal",
-		output_mode:"json",
-		earliest_time: "@m-10m",
-		latest_time: "@m"
-	};
 
 	it('should return 1 result quickly', function() {
 
@@ -21,7 +15,7 @@ describe('Basic searching', function() {
 		var query = splunktester.apply(template, options);
 
 		// run search
-		return splunktester.search(query,searchParams)
+		return splunktester.search(query)
 		.then(function(output){
 
 			// on success
