@@ -16,6 +16,25 @@ var apply = function (template, parms) {
 	return result;
 }
 
+// Allows easy setting of namespace
+var namespace = {
+	owner: "-",
+	app: "-",
+	sharing: "global"
+}
+var owner = function (owner) {
+	namespace.owner = owner;
+	return this;
+}
+var app = function (app) {
+	namespace.app = app;
+	return this;
+}
+var sharing = function (sharing) {
+	namespace.sharing = sharing;
+	return this;
+}
+
 // given a result object, returns a more usable json
 // (probably not great for large results)
 function mapToJson (results) {
@@ -46,7 +65,7 @@ var search = function (query, parms) {
 	
 	var promise = new Promise(function (resolve, reject) {
 
-		service.search( query, parms, function(err, job) {
+		service.search( query, parms, namespace, function(err, job) {
 
 			// error scenarios
 			if (err) return reject(err);
@@ -84,5 +103,8 @@ var exports = module.exports = {
 	service: service,
 	apply: apply,
 	search: search,
-	toJson: mapToJson
+	toJson: mapToJson,
+	owner: owner,
+	app: app,
+	sharing: sharing
 };
