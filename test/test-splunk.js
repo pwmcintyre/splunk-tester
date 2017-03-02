@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var helper = require('../helper');
+var splunktester = require('..');
 
 describe('Basic searching', function() {
 		
@@ -18,10 +18,10 @@ describe('Basic searching', function() {
 			sourcetype: "splunkd",
 			limit: 1
 		}
-		var query = helper.apply(template, options);
+		var query = splunktester.apply(template, options);
 
 		// run search
-		return helper.search(query,searchParams)
+		return splunktester.search(query,searchParams)
 		.then(function(output){
 
 			// on success
@@ -29,7 +29,7 @@ describe('Basic searching', function() {
 			var results = output.results;
 
 			// map results
-			results = helper.toJson(results);
+			results = splunktester.toJson(results);
 
 			// assert
 			expect(properties.runDuration).to.be.below(5);
@@ -40,8 +40,8 @@ describe('Basic searching', function() {
 		.catch(function(err){
 			
 			// if failure
-			expect(err.error).to.be.undefined;
-			expect(err).to.be.undefined;
+			console.log(JSON.stringify(err));
+			expect(err.error).to.be.null;
 		});
 	});
 	

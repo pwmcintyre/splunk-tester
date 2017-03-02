@@ -1,9 +1,9 @@
 {
   "splunk": {
-    "username":"admin",
-    "password":"admin",
+    "username":"tester",
+    "password":"password",
     "scheme":"https",
-    "host":"192.168.99.100",
+    "host":"localhost",
     "port":"8089",
     "version":"6.5"
   }
