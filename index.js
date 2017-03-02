@@ -116,7 +116,7 @@ var search = function (query, p) {
 						if (err) return reject(err);
 						
 						// success
-						return resolve({job:job,results:results});
+						return resolve({job:job,results: mapToJson(results)});
 					});
 				},
 				failed: function(job) {
@@ -140,5 +140,11 @@ var exports = module.exports = {
 	toJson: mapToJson,
 	owner: owner,
 	app: app,
-	sharing: sharing
+	sharing: sharing,
+	params: params,
+	exec_mode: exec_mode,
+	output_mode: output_mode,
+	earliest_time: earliest_time,
+	latest_time: latest_time,
+	namespace: namespace
 };

@@ -22,9 +22,6 @@ describe('Basic searching', function() {
 			var properties = output.job.properties();
 			var results = output.results;
 
-			// map results
-			results = splunktester.toJson(results);
-
 			// assert
 			expect(properties.runDuration).to.be.below(5);
 			expect(properties.resultCount).to.equal(options.limit);
